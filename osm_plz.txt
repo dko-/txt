@@ -1,5 +1,13 @@
-Generierung von weltweiten Postleitzahlen Einzugsgebieten
+Generierung von weltweiten Postleitzahlen-Einzugsgebieten
 =========================================================
+Die Liste der internationalen Postleitsysteme umfasst laut Weltpostverein 117 Staaten (siehe Abbildung). +
+ +
+image:http://de.wikipedia.org/wiki/Postleitzahl#mediaviewer/Datei:Postal_codes_by_country.svg[example Raster] +
+ +
+grau=keine Postleitzahlen... (dann andere Systeme?/oder gaenzlicher Verzicht?) +
+ +
+https://index.okfn.org/country/dataset/postcodes Uebersicht...
+
 relevante OSM-Tags
 ------------------
 [width="70%"]
@@ -23,7 +31,7 @@ Interpolation, dann Union von Regionen gleichen postal_codes?... +
 Dies scheint der Ansatz folgenden Projektes zu sein: +
 http://random.dev.openstreetmap.org/postcodes/
 
-Ansatz admin Grenzen
+Ansatz OSM-Admin Grenzen
 --------------------
 [width="70%"]
 funktioniert nicht komplett zufiedenstellend, da admin-Grenzen nicht identisch mit PLZ Grenzen... +
@@ -32,7 +40,9 @@ moeglicherweise ist es allerdings machbar, wenn genuegend Punkte zur Verguegung 
 
 Ansatz externe Quellen (z.B. geonames)
 --------------------------------------
-bla...
+Im Downloadbereich von geonames (http://download.geonames.org/export/zip/) befindet sich eine Sammlung von aktuell (Stand 19.08.2014) 72 Staaten und deren Postleitzahlen. Diesen
+ Zahlen ist jeweils eine Koordinate (lat/lon) zugewiesen. Auf den ersten Blick erscheint die Liste nicht sehr genau zu sein. Mehrere aufeinander folgende PLZ haben eine identische
+ Koordinate (woran kann das liegen?/ist das begruendet?).
 
 Literatur
 ---------
