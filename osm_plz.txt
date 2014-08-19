@@ -1,39 +1,38 @@
 Generierung von weltweiten Postleitzahlen Einzugsgebieten
 =========================================================
-relevante OSM-Tags:
--------------------
-boundary=postal_code (Relation) Polygon eines PLZ-Bezirkes
-postal_code=... (Node, Way, Relation) es wird empfohlen, nachfolgenden Tag zu benutzen (Karlsruhe-Schema)
-addr:postcode=... (Node, Relation) bezeichnet groesztenteils Gebaeude, wird aber auch fuer POI benutzt
-addr:full=... (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte
+relevante OSM-Tags
+------------------
+[width="70%"]
+boundary=postal_code (Relation) Polygon eines PLZ-Bezirkes +
+postal_code=... (Node, Way, Relation) es wird empfohlen, nachfolgenden Tag zu benutzen (Karlsruhe-Schema) +
+addr:postcode=... (Node, Relation) bezeichnet groesztenteils Gebaeude, wird aber auch fuer POI benutzt +
+addr:full=... (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte +
 
 Ansatz Voronoi-Diagramme
 ------------------------
 [width="70%"]
 Erste Instanz "boundary=postal_code" unveraendert lassen (hoechste Ebene!). Kompletten Bestand laden und verfuegbar halten. Aufbauend darauf sollte es moeglich sein mit Hilfe der
- restlichen Daten diesen Polygon-Datensatz zu ergaenzen. Hierzu folgende Ueberlegungen:
+ restlichen Daten diesen Polygon-Datensatz zu ergaenzen. Hierzu folgende Ueberlegungen: +
 - Alle uebrigen Tags in einen Topf werfen und bei gleichem postal_code/postcode Objekte zusammenlegen (merge?/union?/geometry_collection?) -> hierdurch bilden sich unter Umstaenden
  Gebiete gleicher PLZ aus, welche im folgenden Schritt entweder sofort als Polygon weiter verarbeitet werden koennen oder durch Ermittlung eines Mittelpunktes/Schwerpunktes zur
  Erzeugung von Voronoi Polygonen verwendet werden. Diese Polygone bilden Regionen aus, welche die PLZ-Gebiete repraesentieren sollen. EDIT: Alles in Nodes umwandeln, dann Voronoi-
-Interpolation, dann Union von Regionen gleichen postal_codes?...
+Interpolation, dann Union von Regionen gleichen postal_codes?... +
 - Das Ergebnis der Voronoi Interpolation wird mit den vorhandenen PLZ-Polygonen verschnitten. Hierdurch werden Ueberschneidungen zu diesem Datensatz vermieden. Problematisch koennten
- moegliche identische postal_codes in beiden resultierenden Datensaetzen sein.
-
-Dies scheint der Ansatz folgenden Projektes zu sein:
+ moegliche identische postal_codes in beiden resultierenden Datensaetzen sein. +
+ +
+Dies scheint der Ansatz folgenden Projektes zu sein: +
 http://random.dev.openstreetmap.org/postcodes/
 
 Ansatz admin Grenzen
 --------------------
 [width="70%"]
-funktioniert nicht, da admin-Grenzen nicht identisch mit PLZ Grenzen...
-moeglicherweise ist es allerdings machbar, wenn genuegend Punkte zur Verguegung stehen! Will meinen, dass dann die Straßen als Begrenzung der Gebiete angenommen werden koennen.
+funktioniert nicht komplett zufiedenstellend, da admin-Grenzen nicht identisch mit PLZ Grenzen... +
+moeglicherweise ist es allerdings machbar, wenn genuegend Punkte zur Verguegung stehen! Will meinen, dass dann die Straßen als Begrenzung der Gebiete angenommen werden koennen. +
  Dies setzt jedoch voraus, dass eine große Dichte von Punkten verhanden ist.
 
-Ansatz geonames
----------------
+Ansatz externe Quellen (z.B. geonames)
+--------------------------------------
 bla...
-
-.Free The Postcode
 
 Literatur
 ---------
