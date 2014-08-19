@@ -6,6 +6,11 @@ Ueberschrift
 [width="70%"]
 Lorem Ipsum
 
+Ueberschrift
+------------
+[width="70%"]
+Lorem Ipsum
+
 .Free The Postcode
 
 Literatur
