@@ -1,0 +1,15 @@
+Generierung von weltweiten Postleitzahlen Einzugsgebieten
+=========================================================
+
+Ueberschrift
+------------
+[width="70%"]
+Lorem Ipsum
+
+.Free The Postcode
+
+Literatur
+---------
+[bibliography]
+- jkloe
+- asdf
