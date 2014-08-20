@@ -12,21 +12,26 @@ Diese Daten werden weitestgehend nicht frei zur Verfuegung gestellt. Einige weni
  welche vermutlich selbst aufbereitete Datensaetze anbieten. Eine Uebesicht der Open Knowledge Foundation stellt einige Faktoren der Datenverfuegbarkeit dar (siehe
  https://index.okfn.org/country/dataset/postcodes).
  +
-Die deutschen Postleitzahlen sollen laut http://wiki.openstreetmap.org/wiki/DE:Konsolidierung_der_PLZ-Relationen_in_Deutschland_2013 seit dem 22.12.2013 vollständig in Relationen
- erfasst sein. http://wiki.openstreetmap.org/w/images/e/ef/2013-12-de-postals.png
- +
 Der Aufbau von Postleitsystemen kann sehr kleinteilig ausfallen, wie am Besipiel UK zu erkennen ist (siehe Abbildung). +
 
 image::images/UK_postal_codes.PNG[>UK postal_codes sisyphos:overview<]
 
+OSM Daten
+---------
+Der Datensatz enthaelt Postleitzahlen in unten aufgefuehrten Tags. Der Bestand ist keineswegs vollstaendig und beinhaltet teilweise grosze Luecken.
+Die deutschen Postleitzahlen sollen laut http://wiki.openstreetmap.org/wiki/DE:Konsolidierung_der_PLZ-Relationen_in_Deutschland_2013 seit dem 22.12.2013 vollstaendig in Relationen
+ erfasst sein. http://wiki.openstreetmap.org/w/images/e/ef/2013-12-de-postals.png
+ +
+
 relevante OSM-Tags
-------------------
+~~~~~~~~~~~~~~~~~~
+
 [width="70%",cols=".,.",frame="topbot"]
 |====
 | boundary | postal_code (Relation) Polygon eines PLZ-Bezirkes
-| postal_code | ... (Node, Way, Relation) es wird empfohlen, nachfolgenden Tag zu benutzen (Karlsruhe-Schema)
-| addr:postcode | ... (Node, Relation) bezeichnet groesztenteils Gebaeude, wird aber auch fuer POI benutzt
-| addr:full | ... (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte
+| postal_code | (Node, Way, Relation) es wird empfohlen, nachfolgenden Tag zu benutzen (Karlsruhe-Schema)
+| addr:postcode | Node, Relation) bezeichnet groesztenteils Gebaeude, wird aber auch fuer POI benutzt
+| addr:full | (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte
 |====
 
 Ansatz Voronoi-Diagramme
@@ -34,11 +39,11 @@ Ansatz Voronoi-Diagramme
 [width="70%"]
 Erste Instanz "boundary=postal_code" unveraendert lassen (hoechste Ebene!). Kompletten Bestand laden und verfuegbar halten. Aufbauend darauf sollte es moeglich sein mit Hilfe der
  restlichen Daten diesen Polygon-Datensatz zu ergaenzen. Hierzu folgende Ueberlegungen: +
-- Alle uebrigen Tags in einen Topf werfen und bei gleichem postal_code/postcode Objekte zusammenlegen (merge?/union?/geometry_collection?) -> hierdurch bilden sich unter Umstaenden
+* Alle uebrigen Tags in einen Topf werfen und bei gleichem postal_code/postcode Objekte zusammenlegen (merge?/union?/geometry_collection?) -> hierdurch bilden sich unter Umstaenden
  Gebiete gleicher PLZ aus, welche im folgenden Schritt entweder sofort als Polygon weiter verarbeitet werden koennen oder durch Ermittlung eines Mittelpunktes/Schwerpunktes zur
  Erzeugung von Voronoi Polygonen verwendet werden. Diese Polygone bilden Regionen aus, welche die PLZ-Gebiete repraesentieren sollen. EDIT: Alles in Nodes umwandeln, dann Voronoi-
 Interpolation, dann Union von Regionen gleichen postal_codes?... +
-- Das Ergebnis der Voronoi Interpolation wird mit den vorhandenen PLZ-Polygonen verschnitten. Hierdurch werden Ueberschneidungen zu diesem Datensatz vermieden. Problematisch koennten
+* Das Ergebnis der Voronoi Interpolation wird mit den vorhandenen PLZ-Polygonen verschnitten. Hierdurch werden Ueberschneidungen zu diesem Datensatz vermieden. Problematisch koennten
  moegliche identische postal_codes in beiden resultierenden Datensaetzen sein. +
  +
 Dies scheint der Ansatz folgenden Projektes zu sein: +
@@ -54,9 +59,9 @@ moeglicherweise ist es allerdings machbar, wenn genuegend Punkte zur Verguegung 
 
 Ansatz externe Quellen (z.B. geonames)
 --------------------------------------
-Im Downloadbereich von geonames (http://download.geonames.org/export/zip/) befindet sich eine Sammlung von aktuell ^Stand 19.08.2014^ 72 Staaten und deren Postleitzahlen. Diesen
- Zahlen ist jeweils eine Koordinate (lat/lon) zugewiesen. Auf den ersten Blick erscheint die Liste nicht sehr genau zu sein. Mehrere aufeinander folgende PLZ haben eine identische
- Koordinate (woran kann das liegen?/ist das begruendet?).
+Im Downloadbereich von geonames (http://download.geonames.org/export/zip/) befindet sich eine Sammlung von aktuell 72 Staaten und deren Postleitzahlen ^Stand 19.08.2014^. Diesen
+ Zahlen ist jeweils eine Koordinate (lat/lon) zugewiesen. Auf den ersten Blick erscheint die Liste jedoch nicht sehr genau zu sein. Mehrere aufeinander folgende PLZ haben eine
+ identische Koordinate (woran kann das liegen?/ist das begruendet?). Fuer den Fall, dass diese Liste Verwendung findet ist es vorstellbar dies auf den Voronoi Ansatz zu projizieren.
 
 Literatur
 ---------
