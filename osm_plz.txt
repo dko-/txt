@@ -1,4 +1,4 @@
-Generierung von weltweiten Postleitzahlen-Einzugsgebieten
+Generierung von weltweiten Postleit`zahlen`-Einzugsgebieten
 =========================================================
 
 Die Liste der internationalen Postleitsysteme umfasst laut Weltpostverein 117 Staaten (siehe Abbildung). +
@@ -6,17 +6,28 @@ Die Liste der internationalen Postleitsysteme umfasst laut Weltpostverein 117 St
 image:http://upload.wikimedia.org/wikipedia/commons/d/d4/Postal_codes_by_country.svg[>pic not available:overview<]
 
 grau=keine Postleitzahlen... (dann andere Systeme?/oder gaenzlicher Verzicht?) +
+alle andere Farben repraesentieren die Anzahl der Stellen der PLZ im Land (siehe wikipedia) +
  +
-https://index.okfn.org/country/dataset/postcodes Uebersicht...
+Diese Daten werden weitestgehend nicht frei zur Verfuegung gestellt. Einige wenige Staaten bieten diese Daten zur freien Benutzung an, zudem gibt es mehrere kommerzielle Anbieter,
+ welche vermutlich selbst aufbereitete Datensaetze anbieten. Eine Uebesicht der Open Knowledge Foundation stellt einige Faktoren der Datenverfuegbarkeit dar (siehe
+ https://index.okfn.org/country/dataset/postcodes).
+ +
+Die deutschen Postleitzahlen sollen laut http://wiki.openstreetmap.org/wiki/DE:Konsolidierung_der_PLZ-Relationen_in_Deutschland_2013 seit dem 22.12.2013 vollständig in Relationen
+ erfasst sein. http://wiki.openstreetmap.org/w/images/e/ef/2013-12-de-postals.png
+ +
+Der Aufbau von Postleitsystemen kann sehr kleinteilig ausfallen, wie am Besipiel UK zu erkennen ist (siehe Abbildung). +
+
+image::images/UK_postal_codes.PNG[>UK postal_codes sisyphos:overview<]
 
 relevante OSM-Tags
 ------------------
-[width="70%"]
-boundary=postal_code (Relation) Polygon eines PLZ-Bezirkes +
-postal_code=... (Node, Way, Relation) es wird empfohlen, nachfolgenden Tag zu benutzen (Karlsruhe-Schema) +
-addr:postcode=... (Node, Relation) bezeichnet groesztenteils Gebaeude, wird aber auch fuer POI benutzt +
-addr:full=... (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte +
-
+[width="70%",cols=".,.",frame="topbot"]
+|====
+| boundary | postal_code (Relation) Polygon eines PLZ-Bezirkes
+| postal_code | ... (Node, Way, Relation) es wird empfohlen, nachfolgenden Tag zu benutzen (Karlsruhe-Schema)
+| addr:postcode | ... (Node, Relation) bezeichnet groesztenteils Gebaeude, wird aber auch fuer POI benutzt
+| addr:full | ... (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte
+|====
 
 Ansatz Voronoi-Diagramme
 ------------------------
@@ -31,7 +42,8 @@ Interpolation, dann Union von Regionen gleichen postal_codes?... +
  moegliche identische postal_codes in beiden resultierenden Datensaetzen sein. +
  +
 Dies scheint der Ansatz folgenden Projektes zu sein: +
-http://random.dev.openstreetmap.org/postcodes/
+http://random.dev.openstreetmap.org/postcodes/ +
+Hier besteht die Moeglichkeit die Methode auf vier verschiedene Datensaetze anzuwenden.
 
 Ansatz OSM-Admin Grenzen
 ------------------------
@@ -42,12 +54,13 @@ moeglicherweise ist es allerdings machbar, wenn genuegend Punkte zur Verguegung 
 
 Ansatz externe Quellen (z.B. geonames)
 --------------------------------------
-Im Downloadbereich von geonames (http://download.geonames.org/export/zip/) befindet sich eine Sammlung von aktuell (Stand 19.08.2014) 72 Staaten und deren Postleitzahlen. Diesen
+Im Downloadbereich von geonames (http://download.geonames.org/export/zip/) befindet sich eine Sammlung von aktuell ^Stand 19.08.2014^ 72 Staaten und deren Postleitzahlen. Diesen
  Zahlen ist jeweils eine Koordinate (lat/lon) zugewiesen. Auf den ersten Blick erscheint die Liste nicht sehr genau zu sein. Mehrere aufeinander folgende PLZ haben eine identische
  Koordinate (woran kann das liegen?/ist das begruendet?).
 
 Literatur
 ---------
 [bibliography]
-- jkloe
-- asdf
+- http://wiki.openstreetmap.org/wiki/Free_The_Postcode / http://random.dev.openstreetmap.org/postcodes/#
+- http://download.geonames.org/export/zip/
+- 
