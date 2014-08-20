@@ -17,6 +17,7 @@ postal_code=... (Node, Way, Relation) es wird empfohlen, nachfolgenden Tag zu be
 addr:postcode=... (Node, Relation) bezeichnet groesztenteils Gebaeude, wird aber auch fuer POI benutzt +
 addr:full=... (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte +
 
+
 Ansatz Voronoi-Diagramme
 ------------------------
 [width="70%"]
