@@ -1,9 +1,10 @@
 Generierung von weltweiten Postleitzahlen-Einzugsgebieten
 =========================================================
+
 Die Liste der internationalen Postleitsysteme umfasst laut Weltpostverein 117 Staaten (siehe Abbildung). +
- +
-image:http://de.wikipedia.org/wiki/Postleitzahl#mediaviewer/Datei:Postal_codes_by_country.svg[example Raster] +
- +
+
+image:http://upload.wikimedia.org/wikipedia/commons/d/d4/Postal_codes_by_country.svg[>pic not available:overview<]
+
 grau=keine Postleitzahlen... (dann andere Systeme?/oder gaenzlicher Verzicht?) +
  +
 https://index.okfn.org/country/dataset/postcodes Uebersicht...
@@ -32,7 +33,7 @@ Dies scheint der Ansatz folgenden Projektes zu sein: +
 http://random.dev.openstreetmap.org/postcodes/
 
 Ansatz OSM-Admin Grenzen
---------------------
+------------------------
 [width="70%"]
 funktioniert nicht komplett zufiedenstellend, da admin-Grenzen nicht identisch mit PLZ Grenzen... +
 moeglicherweise ist es allerdings machbar, wenn genuegend Punkte zur Verguegung stehen! Will meinen, dass dann die Straßen als Begrenzung der Gebiete angenommen werden koennen. +
