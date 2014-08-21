@@ -1,4 +1,4 @@
-Generierung von weltweiten Postleit`zahlen`-Einzugsgebieten
+Generierung von weltweiten Postleit`zahlen'-Einzugsgebieten
 =========================================================
 
 Die Liste der internationalen Postleitsysteme umfasst laut Weltpostverein 117 Staaten (siehe Abbildung). +
@@ -46,7 +46,7 @@ Interpolation, dann Union von Regionen gleichen postal_codes?... +
 * Das Ergebnis der Voronoi Interpolation wird mit den vorhandenen PLZ-Polygonen verschnitten. Hierdurch werden Ueberschneidungen zu diesem Datensatz vermieden. Problematisch koennten
  moegliche identische postal_codes in beiden resultierenden Datensaetzen sein. +
  +
-Dies scheint der Ansatz folgenden Projektes zu sein: +
+Dies scheint auch der Ansatz folgenden Projektes zu sein: +
 http://random.dev.openstreetmap.org/postcodes/ +
 Hier besteht die Moeglichkeit die Methode auf vier verschiedene Datensaetze anzuwenden.
 
