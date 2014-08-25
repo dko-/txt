@@ -1,4 +1,4 @@
-Generierung von weltweiten Postleit`zahlen'-Einzugsgebieten
+Generierung von weltweiten Postleit"zahlen"-Einzugsgebieten
 =========================================================
 
 Die Liste der internationalen Postleitsysteme umfasst laut Weltpostverein 117 Staaten (siehe Abbildung). +
@@ -34,34 +34,42 @@ relevante OSM-Tags
 | addr:full | (Node, Relation) Moeglichkeit der Eingabe von kompletten Addressen, falls kein anderer Tag passen sollte
 |====
 
-Ansatz Voronoi-Diagramme
-------------------------
+Ansatz Voronoi-Diagramme (bevorzugt)
+------------------------------------
 [width="70%"]
 Erste Instanz "boundary=postal_code" unveraendert lassen (hoechste Ebene!). Kompletten Bestand laden und verfuegbar halten. Aufbauend darauf sollte es moeglich sein mit Hilfe der
- restlichen Daten diesen Polygon-Datensatz zu ergaenzen. Hierzu folgende Ueberlegungen: +
+ restlichen Daten diesen Polygon-Datensatz zu ergaenzen. Hierzu folgende Ueberlegungen:
+[options="compact"]
 * Alle uebrigen Tags in einen Topf werfen und bei gleichem postal_code/postcode Objekte zusammenlegen (merge?/union?/geometry_collection?) -> hierdurch bilden sich unter Umstaenden
  Gebiete gleicher PLZ aus, welche im folgenden Schritt entweder sofort als Polygon weiter verarbeitet werden koennen oder durch Ermittlung eines Mittelpunktes/Schwerpunktes zur
  Erzeugung von Voronoi Polygonen verwendet werden. Diese Polygone bilden Regionen aus, welche die PLZ-Gebiete repraesentieren sollen. EDIT: Alles in Nodes umwandeln, dann Voronoi-
 Interpolation, dann Union von Regionen gleichen postal_codes?... +
 * Das Ergebnis der Voronoi Interpolation wird mit den vorhandenen PLZ-Polygonen verschnitten. Hierdurch werden Ueberschneidungen zu diesem Datensatz vermieden. Problematisch koennten
  moegliche identische postal_codes in beiden resultierenden Datensaetzen sein. +
- +
+ 
+Beispiel Luxemburg (ohne zusammengelegte Gebiete gleicher Postleitzahl/Verwendung von Roh-OSM POIs "addr:postal_code"): +
+
+image::images/voronoi_example_luxembourg.png[>luxembourg postal_codes voronoi<]
+
 Dies scheint auch der Ansatz folgenden Projektes zu sein: +
 http://random.dev.openstreetmap.org/postcodes/ +
 Hier besteht die Moeglichkeit die Methode auf vier verschiedene Datensaetze anzuwenden.
 
-Ansatz OSM-Admin Grenzen
-------------------------
+Ansatz OSM-Admin Grenzen -> PLZ Grenzen
+---------------------------------------
 [width="70%"]
-funktioniert nicht komplett zufiedenstellend, da admin-Grenzen nicht identisch mit PLZ Grenzen... +
-moeglicherweise ist es allerdings machbar, wenn genuegend Punkte zur Verguegung stehen! Will meinen, dass dann die Straßen als Begrenzung der Gebiete angenommen werden koennen. +
- Dies setzt jedoch voraus, dass eine große Dichte von Punkten verhanden ist.
+funktioniert nicht zufiedenstellend, da admin-Grenzen nicht identisch mit PLZ Grenzen... daher im Moment keine Anwendung vorstellbar.
 
 Ansatz externe Quellen (z.B. geonames)
 --------------------------------------
 Im Downloadbereich von geonames (http://download.geonames.org/export/zip/) befindet sich eine Sammlung von aktuell 72 Staaten und deren Postleitzahlen ^Stand 19.08.2014^. Diesen
  Zahlen ist jeweils eine Koordinate (lat/lon) zugewiesen. Auf den ersten Blick erscheint die Liste jedoch nicht sehr genau zu sein. Mehrere aufeinander folgende PLZ haben eine
  identische Koordinate (woran kann das liegen?/ist das begruendet?). Fuer den Fall, dass diese Liste Verwendung findet ist es vorstellbar dies auf den Voronoi Ansatz zu projizieren.
+
+andere Ansaetze/Ideen
+---------------------
+Moeglicherweise ist es machbar die naechst gelegene Straße als Begrenzung der neu entstehenden PLZ-Gebiete anzunehmen (nicht trivial...). Dies setzt voraus, dass eine große Dichte
+ von Punkten/POI verhanden ist.
 
 Literatur
 ---------
